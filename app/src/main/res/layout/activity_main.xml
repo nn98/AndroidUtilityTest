@@ -2,79 +2,288 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/background"
+    android:background="#000"
     android:orientation="horizontal"
-    android:layout_gravity="center"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical"
+        app:layout_constraintRight_toLeftOf="@id/info">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con X:"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con Y:"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con Width:"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con Height:"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="con Color:"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="vertical"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:text="Info_"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/conX"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/conY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/conW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/conH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+        <TextView
+            android:id="@+id/conC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:textSize="10dp" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/con"
-        android:layout_width="100px"
-        android:layout_height="100px"
-        android:background="#000"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:background="#fff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </TextView>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btn0"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="basic"/>
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn0"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:background="@drawable/btn"
+        android:text="basic"
+        android:textColor="#fff"
+        android:textSize="8dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="Hello World!"
+        android:textColor="#fff"
+        android:textSize="10dp" />
+
     <LinearLayout
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:gravity="center">
-        <Button
-            android:id="@+id/Big"
-            android:text="BIG"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/sReset"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
             android:text="Reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/Small"
-            android:text="SMALL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/U"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/LRR">
+
+        <Button
+            android:id="@+id/wInc"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="WIDTH INC"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/up"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn"
+            android:text="UP"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/wDec"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="WIDTH DEC"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LRR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@id/D">
+
+        <Button
+            android:id="@+id/left"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="Left"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn"
+            android:text="Start"
+            android:textColor="#fff"
+            android:textSize="8dp" />
+
+        <Button
+            android:id="@+id/right"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="Right"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/D"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent">
+
         <Button
-            android:id="@+id/left"
-            android:text="Left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/hInc"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="HEIGHT INC"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
         <Button
-            android:id="@+id/reset"
-            android:text="Reset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/down"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/btn"
+            android:text="DOWN"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
+
         <Button
-            android:id="@+id/right"
-            android:text="Right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/hDec"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn"
+            android:text="HEIGHT DEC"
+            android:textColor="#fff"
+            android:textSize="8dp"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
