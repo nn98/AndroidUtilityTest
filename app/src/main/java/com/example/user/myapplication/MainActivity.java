@@ -1,5 +1,6 @@
 package com.example.user.myapplication;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.support.v7.app.AppCompatActivity;
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
     TextView tConH;
     TextView tConC;
 
+    Intent i;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity {
         tConW = (TextView) findViewById(R.id.conW);
         tConH = (TextView) findViewById(R.id.conH);
         tConC = (TextView) findViewById(R.id.conC);
+
+        i=new Intent(this,DrawActivity.class);
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -381,6 +386,13 @@ public class MainActivity extends AppCompatActivity {
         wDec.setOnTouchListener(wDListener);
         hInc.setOnTouchListener(hIListener);
         hDec.setOnTouchListener(hDListener);
+
+        sReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(i);
+            }
+        });
 
     }
 
