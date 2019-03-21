@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     int id[] = new int[3];
     int x[] = new int[3];
     int y[] = new int[3];
-    int[] conInfo = new int[4];
+    int[] conInfo = new int[6];
     float conX;
     float conY;
     int conW;
@@ -47,10 +47,16 @@ public class MainActivity extends AppCompatActivity {
     Button hInc;
     Button hDec;
     Button sReset;
+    Button rotationU;
+    Button rotationD;
+    Button rotationL;
+    Button rotationR;
 
     TextView con;
     float oldXvalue;
     float oldYvalue;
+    float roX=0;
+    float roY=0;
 
     TextView tConX;
     TextView tConY;
@@ -58,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
     TextView tConW;
     TextView tConH;
     TextView tConC;
+    TextView tConRX;
+    TextView tConRY;
+    LinearLayout tInfo;
+    LinearLayout Info;
 
     Intent i;
 
@@ -86,6 +96,14 @@ public class MainActivity extends AppCompatActivity {
         tConW = (TextView) findViewById(R.id.conW);
         tConH = (TextView) findViewById(R.id.conH);
         tConC = (TextView) findViewById(R.id.conC);
+        rotationU=(Button)findViewById(R.id.rotationU);
+        rotationD=(Button)findViewById(R.id.rotationD);
+        rotationL=(Button)findViewById(R.id.rotationL);
+        rotationR=(Button)findViewById(R.id.rotationR);
+        tConRX=(TextView) findViewById(R.id.conRX);
+        tConRY=(TextView) findViewById(R.id.conRY);
+        tInfo=(LinearLayout)findViewById(R.id.tinfo);
+        Info=(LinearLayout)findViewById(R.id.info);
 
         i=new Intent(this,DrawActivity.class);
 
@@ -187,6 +205,10 @@ public class MainActivity extends AppCompatActivity {
                     wDec.setVisibility(LinearLayout.VISIBLE);
                     hInc.setVisibility(LinearLayout.VISIBLE);
                     hDec.setVisibility(LinearLayout.VISIBLE);
+                    rotationU.setVisibility(LinearLayout.VISIBLE);
+                    rotationD.setVisibility(LinearLayout.VISIBLE);
+                    rotationL.setVisibility(LinearLayout.VISIBLE);
+                    rotationR.setVisibility(LinearLayout.VISIBLE);
                     //Location control
                     con.getLocationOnScreen(conInfo);
                     con.setX(conInfo[0]);
@@ -203,12 +225,18 @@ public class MainActivity extends AppCompatActivity {
                     conH = p.height;
                     tConW.setText("" + conW);
                     tConH.setText("" + conH);
+                    conInfo[4]=(int)con.getRotationX();
+                    conInfo[5]=(int)con.getRotationY();
                     //Color control
                     tConC.setText(String.format("#%x", c));
-
+                    tConRX.setText(""+conInfo[4]);
+                    tConRY.setText(""+conInfo[5]);
+                    Info.setVisibility(LinearLayout.VISIBLE);
+                    tInfo.setVisibility(LinearLayout.VISIBLE);
                     first = false;
                 } else {
                     System.out.println(Arrays.toString(conInfo));
+
                     p.width = conInfo[2];
                     conW = conInfo[2];
                     tConW.setText("" + conW);
@@ -223,10 +251,30 @@ public class MainActivity extends AppCompatActivity {
                     con.setY(conInfo[1]+(conInfo[3]-con.getHeight())/2);
                     tConY.setText("" + conY);
                     con.setBackgroundColor(Color.rgb(255, 255, 255));
+
+                    con.setRotationX((float)conInfo[4]);
+                    con.setRotationY((float)conInfo[5]);
                 }
             }
         });
 
+        /*3차원회전 기본 테스트
+        rotationL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roX+=20;
+                con.setRotationX(roX);
+            }
+        });
+
+        rotationR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roX-=20;
+                con.setRotationX(roX);
+            }
+        });
+        */
         /*
         btn0.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -377,6 +425,38 @@ public class MainActivity extends AppCompatActivity {
                 tConY.setText("" + conY);
             }
         });
+        LongPressRepeatListener RUListener = new LongPressRepeatListener(200, (long) 0.01, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roX+=3;
+                con.setRotationX(roX);
+                tConRX.setText(""+Math.abs(roX%360));
+            }
+        });
+        LongPressRepeatListener RDListener = new LongPressRepeatListener(200, (long) 0.01, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roX-=3;
+                con.setRotationX(roX);
+                tConRX.setText(""+Math.abs(roX%360));
+            }
+        });
+        LongPressRepeatListener RLListener = new LongPressRepeatListener(200, (long) 0.01, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roY+=3;
+                con.setRotationY(roY);
+                tConRY.setText(""+Math.abs(roY%360));
+            }
+        });
+        LongPressRepeatListener RRListener = new LongPressRepeatListener(200, (long) 0.01, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                roY-=3;
+                con.setRotationY(roY);
+                tConRY.setText(""+Math.abs(roY%360));
+            }
+        });
 
         left.setOnTouchListener(lListener);
         right.setOnTouchListener(rListener);
@@ -386,6 +466,10 @@ public class MainActivity extends AppCompatActivity {
         wDec.setOnTouchListener(wDListener);
         hInc.setOnTouchListener(hIListener);
         hDec.setOnTouchListener(hDListener);
+        rotationU.setOnTouchListener(RUListener);
+        rotationD.setOnTouchListener(RDListener);
+        rotationL.setOnTouchListener(RLListener);
+        rotationR.setOnTouchListener(RRListener);
 
         sReset.setOnClickListener(new View.OnClickListener() {
             @Override
