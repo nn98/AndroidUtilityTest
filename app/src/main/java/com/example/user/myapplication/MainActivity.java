@@ -16,10 +16,28 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    /*
+    R.id testing=new R.id();
+    Class c=testing.getClass();
+    String className=c.getName();
+    public void settingMethod(View example) throws  Exception{
+        Class cls = Class.forName(className);
+        Object obj = cls.newInstance();
+        //call the printIt method
+        Field f = cls.getDeclaredField("pc" + Integer.toString(i));
+        f.setAccessible(true);
+        Object val = f.get(obj);
+        pcId[i - 1] = (Integer) val;
+        }
+        example= (View) findViewById(R.id.example); //해당 뷰 이름으로 id 확인 후 객체 생성
+    }
+     */
     Random r;
     Button btn0;
     int id[] = new int[3];
@@ -78,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         r = new Random();
         point = new Point();
+        View example=(TextView)findViewById(R.id.text1);
+
+        System.out.println(example.toString());
+
         tv = (TextView) findViewById(R.id.text1);
         btn0 = (Button) findViewById(R.id.btn0);
         reset = (Button) findViewById(R.id.reset);
